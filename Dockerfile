@@ -1,12 +1,16 @@
 FROM python:3.11-slim
 
-# Installer les dépendances
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les dépendances
 COPY requirements.txt .
+
+# Installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier le code de l'application
+# Copier tout le projet
 COPY . .
 
-# Exécuter les tests avec pytest
+# Commande par défaut pour exécuter les tests
 CMD ["pytest"]
-
